@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function hasRole(role) {
+      return request.auth != null && request.auth.token.role == role;
+    }
+    function canRead() {
+      return hasRole('admin') || hasRole('supervisor') || hasRole('staff') || hasRole('viewer');
+    }
+    function canWrite() {
+      return hasRole('admin') || hasRole('supervisor') || hasRole('staff');
+    }
+
+    match /queue_system/current_state {
+      allow read: if canRead();
+      allow create, update, delete: if canWrite();
+    }
+
+    match /public_trackers/{token} {
+      allow read: if true;
+      allow create, update, delete: if canWrite();
+      allow write: if false;
+    }
+  }
+}

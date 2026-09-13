@@ -1,0 +1,19 @@
+{
+  "rules": {
+    "smart_queue_live_state": {
+      ".read": "auth != null && (auth.token.role == 'admin' || auth.token.role == 'supervisor' || auth.token.role == 'staff' || auth.token.role == 'viewer')",
+      ".write": "auth != null && (auth.token.role == 'admin' || auth.token.role == 'supervisor' || auth.token.role == 'staff')",
+      ".validate": "newData.hasChildren(['tickets','counters','services','updatedAt'])",
+      "updatedAt": {
+        ".validate": "newData.isNumber()"
+      }
+    },
+    "public_trackers": {
+      "$token": {
+        ".read": true,
+        ".write": "auth != null && (auth.token.role == 'admin' || auth.token.role == 'supervisor' || auth.token.role == 'staff')",
+        ".validate": "newData.hasChildren(['token','ticketCode','serviceName','status','aheadCount','createdAt','updatedAt']) && newData.child('token').val() == $token && newData.child('ticketCode').isString() && newData.child('serviceName').isString() && newData.child('status').isString() && newData.child('aheadCount').isNumber() && newData.child('createdAt').isNumber() && newData.child('updatedAt').isNumber()"
+      }
+    }
+  }
+}

@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-300: #5eead4;
+  --color-brand-400: #2dd4bf;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  --color-brand-900: #134e4a;
+  --color-brand-950: #042f2e;
+}
+
+:root {
+  --theme-primary: #0d9488;
+  --theme-accent: #14b8a6;
+  --theme-bg: #0f172a;
+  --theme-card: #1e293b;
+  --theme-text: #0f172a;
+  --theme-card-text: #1e293b;
+  --theme-button-text: #ffffff;
+  --theme-font-family: 'Tajawal', sans-serif;
+  --theme-font-weight: 700;
+  --theme-font-scale: 1rem;
+}
+
+body {
+  font-family: var(--theme-font-family, 'Tajawal'), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--theme-text, #0f172a);
+  -webkit-tap-highlight-color: transparent;
+  font-size: var(--theme-font-scale, 1rem);
+}
+
+/* Brand Fallbacks & High-Contrast Utility Overrides */
+.bg-brand-600 {
+  background-color: var(--theme-primary, #0d9488) !important;
+}
+.bg-brand-700 {
+  background-color: #0f766e !important;
+}
+.bg-brand-800 {
+  background-color: #115e59 !important;
+}
+.bg-brand-900 {
+  background-color: #134e4a !important;
+}
+.bg-brand-100 {
+  background-color: #ccfbf1 !important;
+}
+.bg-brand-500\/10 {
+  background-color: rgba(13, 148, 136, 0.12) !important;
+}
+
+.text-brand-600 {
+  color: var(--theme-primary, #0d9488) !important;
+}
+.text-brand-700 {
+  color: #0f766e !important;
+}
+.text-brand-800 {
+  color: #115e59 !important;
+}
+.text-brand-400 {
+  color: #2dd4bf !important;
+}
+.text-brand-300 {
+  color: #5eead4 !important;
+}
+.text-brand-100 {
+  color: #e6fffa !important;
+}
+
+.border-brand-500 {
+  border-color: var(--theme-accent, #14b8a6) !important;
+}
+
+.hover\:bg-brand-700:hover {
+  filter: brightness(0.92);
+}
+
+.app-banner-gradient {
+  background: linear-gradient(135deg, var(--theme-primary, #0d9488) 0%, #064e3b 100%) !important;
+}
+
+/* High Contrast Active Element Texts */
+.active-tab-text {
+  color: var(--theme-button-text, #ffffff) !important;
+  font-weight: 800 !important;
+}
+
+.btn-contrast-text {
+  color: var(--theme-button-text, #ffffff) !important;
+}
+
+.num-latin {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  display: inline-block;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-marquee {
+  animation: marquee 26s linear infinite;
+}
+
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  #thermal-ticket-print, #thermal-ticket-print * {
+    visibility: visible !important;
+  }
+  #thermal-ticket-print {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm;
+    margin: 0;
+    padding: 12px;
+    font-family: monospace;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

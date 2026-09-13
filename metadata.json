@@ -1,0 +1,6 @@
+{
+  "name": "Smart Queue Cloud System",
+  "description": "نظام إدارة الانتظار والمواعيد الذكي مع تنبيهات الواتساب والرسائل القصيرة SMS، التتبع الحي بالباركود، كشك التذاكر وشاشات النداء",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
